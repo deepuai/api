@@ -39,6 +39,46 @@ module.exports = app => {
                 'model_id': 1,
                 'dataset_id': 1
             })
+        await app.db('applications').insert(
+            {
+                'parent_id': 1,
+                'name': 'ResNet50-versao-1a',
+                'version': 'ABCDEFGH',
+                'accuracy': 0.921,
+                'n_accesses': 0,
+                'model_id': 1,
+                'dataset_id': 1
+            })
+        await app.db('applications').insert(
+            {
+                'parent_id': 1,
+                'name': 'ResNet50-versao-1b',
+                'version': 'XYZAPQYT',
+                'accuracy': 0.921,
+                'n_accesses': 0,
+                'model_id': 1,
+                'dataset_id': 1
+            })
+        await app.db('applications').insert(
+            {
+                'parent_id': 2,
+                'name': 'ResNet50-versao-1a1',
+                'version': '12345678',
+                'accuracy': 0.921,
+                'n_accesses': 0,
+                'model_id': 1,
+                'dataset_id': 1
+            })
+        await app.db('applications').insert(
+            {
+                'parent_id': 4,
+                'name': 'ResNet50-versao-1a2',
+                'version': '98761234',
+                'accuracy': 0.921,
+                'n_accesses': 0,
+                'model_id': 1,
+                'dataset_id': 1
+            })
         res.status(204).send('Banco de dados inicializado com alguns exemplos!')
     }
 

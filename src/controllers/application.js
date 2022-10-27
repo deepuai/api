@@ -36,5 +36,28 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return { save, get }
+    const getApplicationVersions = (req, res) => {
+        const applicationId = req.params.id
+        app.db.raw(`
+            WITH RECURSIVE app_version (id, parent_id, depth, version_history) AS 
+            (
+                SELECT highest_app.id, highest_app.parent_id, 1::INT AS depth, highest_app.version::TEXT AS version_history 
+                FROM applications AS highest_app
+                WHERE highest_app.parent_id IS NULL
+                UNION ALL
+                SELECT sub_app.id, sub_app.parent_id, current_app.depth + 1 AS depth, 
+                    (current_app.version_history || ' -> ' || sub_app.version::TEXT)
+                FROM app_version AS current_app, applications AS sub_app 
+                WHERE sub_app.parent_id = current_app.id
+           )
+           SELECT id, version_history FROM app_version WHERE app_version.id = ?
+            `
+            , applicationId)
+            .then(applications => {
+                res.json(applications.rows)
+            })
+            .catch(err => res.status(500).send(err))
+    }
+
+    return { save, get, getApplicationVersions }
 }

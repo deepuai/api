@@ -6,6 +6,9 @@ module.exports = app => {
         .post(app.src.controllers.application.save)
         .get(app.src.controllers.application.get)
 
+    app.route('/applications/:id/versions')
+        .get(app.src.controllers.application.getApplicationVersions)
+
     app.route('/models')
         .post(app.src.controllers.model.save)
         .get(app.src.controllers.model.get)
