@@ -14,7 +14,9 @@
     "consign": "^0.1.6",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "knex": "^2.3.0"
+    "knex": "^2.3.0",
+    "mysql2": "^2.3.3",
+    "pg": "^8.8.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
