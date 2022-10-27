@@ -4,7 +4,8 @@ exports.up = function(knex, Promise) {
         table.string('name').notNull(),
         table.string('version').notNull().unique()
         table.float('accuracy').notNull()
-        table.integer('n_accesses').notNull()
+        table.integer('n_accesses').notNull().defaultTo(0)
+        table.integer('model_id').references('id').inTable('models').notNull()
     })
 };
 
