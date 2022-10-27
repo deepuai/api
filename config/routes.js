@@ -10,4 +10,8 @@ module.exports = app => {
         .post(app.src.controllers.model.save)
         .get(app.src.controllers.model.get)
 
+    app.route('/datasets')
+        .post(app.src.controllers.dataset.save)
+        .get(app.src.controllers.dataset.get)
+
 }
