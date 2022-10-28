@@ -30,8 +30,8 @@ module.exports = app => {
     }
 
     const get = (req, res) => {
-        app.db('models')
-            .select()
+        app.db('models AS m')
+            .select('m.id', 'm.name AS model_name', 'm.description', 'm.autors', 'm.n_params', 'm.n_layers', 'm.size', 'm.created_on')
             .then(users => res.json(users))
             .catch(err => res.status(500).send(err))
     }

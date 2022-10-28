@@ -5,9 +5,12 @@ module.exports = app => {
         await app.db('models').insert(
             {
                 'name': 'ResNet50',
+                'description': 'Arquitetura de rede neural baseada no framework de aprendizado residual.',
+                'autors': 'Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun',
                 'n_params': '25.6M',
                 'n_layers': 107,
-                'size': '98 MB'
+                'size': '? MB',
+                'created_on': '2015'
             })
         await app.db('datasets').insert(
             {
