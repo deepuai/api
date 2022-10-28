@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
         table.string('version').notNull().unique()
         table.float('accuracy').notNull()
         table.integer('n_accesses').notNull().defaultTo(0)
+        table.jsonb('classes')
         table.integer('parent_id').references('id').inTable('applications')
         table.integer('model_id').references('id').inTable('models').notNull()
         table.integer('dataset_id').references('id').inTable('datasets').notNull()
