@@ -32,7 +32,20 @@ module.exports = app => {
     const get = (req, res) => {
         app.db('applications')
             .select()
-            .then(users => res.json(users))
+            .then(applications => res.json(applications))
+            .catch(err => res.status(500).send(err))
+    }
+
+    const getAllInfo = (req, res) => {
+        app.db('applications AS a')
+            .select(
+                'a.id AS applications_id', 'a.name AS application_name', 'a.version', 'a.accuracy', 'a.n_accesses', 'a.parent_id as parent_application_id',
+                'm.id AS model_id', 'm.name AS model_name', 'm.n_params', 'm.n_layers', 'm.size as model_size',
+                'd.id AS dataset_id', 'd.name AS dataset_name', 'd.size AS dataset_size', 'd.n_images', 'd.n_classes', 'd.images'
+            )
+            .join('models as m', 'a.model_id', '=', 'm.id')
+            .join('datasets as d', 'a.dataset_id', '=', 'd.id')
+            .then(applications => res.json(applications))
             .catch(err => res.status(500).send(err))
     }
 
@@ -59,5 +72,5 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return { save, get, getApplicationVersions }
+    return { save, get, getAllInfo, getApplicationVersions }
 }
