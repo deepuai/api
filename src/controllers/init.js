@@ -9,13 +9,13 @@ module.exports = app => {
                 'autors': 'Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun',
                 'n_params': '25.6M',
                 'n_layers': 107,
-                'size': '? MB',
+                'size': '101 MB',
                 'created_on': '2015'
             })
         await app.db('datasets').insert(
             {
-                'name': 'Imagens de Animais',
-                'size': '12M',
+                'name': 'Exemplo de Dataset',
+                'size': '? MB',
                 'n_images': 10,
                 'n_classes': 5,
                 'images': JSON.stringify([
@@ -37,46 +37,6 @@ module.exports = app => {
             {
                 'name': 'ResNet50',
                 'version': 'ImageNet',
-                'accuracy': 0.921,
-                'n_accesses': 0,
-                'model_id': 1,
-                'dataset_id': 1
-            })
-        await app.db('applications').insert(
-            {
-                'parent_id': 1,
-                'name': 'ResNet50-versao-1a',
-                'version': 'ABCDEFGH',
-                'accuracy': 0.921,
-                'n_accesses': 0,
-                'model_id': 1,
-                'dataset_id': 1
-            })
-        await app.db('applications').insert(
-            {
-                'parent_id': 1,
-                'name': 'ResNet50-versao-1b',
-                'version': 'XYZAPQYT',
-                'accuracy': 0.921,
-                'n_accesses': 0,
-                'model_id': 1,
-                'dataset_id': 1
-            })
-        await app.db('applications').insert(
-            {
-                'parent_id': 2,
-                'name': 'ResNet50-versao-1a1',
-                'version': '12345678',
-                'accuracy': 0.921,
-                'n_accesses': 0,
-                'model_id': 1,
-                'dataset_id': 1
-            })
-        await app.db('applications').insert(
-            {
-                'parent_id': 4,
-                'name': 'ResNet50-versao-1a2',
-                'version': '98761234',
                 'accuracy': 0.921,
                 'n_accesses': 0,
                 'model_id': 1,
