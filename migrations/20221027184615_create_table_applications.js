@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable('applications', table => {
         table.increments('id').primary()
         table.string('name').notNull()
-        table.string('version').notNull().unique()
+        table.string('version').notNull()
         table.float('accuracy').notNull()
         table.integer('n_accesses').notNull().defaultTo(0)
         table.jsonb('classes')

@@ -12,6 +12,16 @@ module.exports = app => {
                 'size': '101 MB',
                 'created_on': '2015'
             })
+        await app.db('models').insert(
+            {
+                'name': 'Xception',
+                'description': 'Arquitetura de rede neural composta por módulos Inception.',
+                'autors': 'François Chollet',
+                'n_params': '22.9M',
+                'n_layers': 81,
+                'size': '88 MB',
+                'created_on': '2017'
+            })
         await app.db('datasets').insert(
             {
                 'name': 'Exemplo de Dataset',
@@ -40,6 +50,15 @@ module.exports = app => {
                 'accuracy': 0.921,
                 'n_accesses': 0,
                 'model_id': 1,
+                'dataset_id': 1
+            })
+        await app.db('applications').insert(
+            {
+                'name': 'Xception',
+                'version': 'ImageNet',
+                'accuracy': 0.945,
+                'n_accesses': 0,
+                'model_id': 2,
                 'dataset_id': 1
             })
         res.status(204).send('Banco de dados inicializado com alguns exemplos!')
