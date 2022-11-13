@@ -1,6 +1,22 @@
 module.exports = app => {
     const { existsOrError } = app.src.validations
 
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1))
+            [array[i], array[j]] = [array[j], array[i]]
+        }
+    }
+
+    const formatBytes = (bytes, decimals = 2) => {
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+        if (bytes === 0) return '0 Bytes'
+        const k = 1024
+        const dm = decimals < 0 ? 0 : decimals
+        const i = Math.floor(Math.log(bytes) / Math.log(k))
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
+    }
+
     const save = async (req, res) => {
         const application = { ...req.body }
         if(req.params.id) application.id = req.params.id
@@ -45,7 +61,14 @@ module.exports = app => {
             )
             .join('models as m', 'a.model_id', '=', 'm.id')
             .join('datasets as d', 'a.dataset_id', '=', 'd.id')
-            .then(applications => res.json(applications))
+            .then(applications => {
+                return res.json(applications.map(application => {
+                    application.dataset_size = formatBytes(application.dataset_size)
+                    shuffleArray(application.images)
+                    application.images = application.images.slice(0, 12)
+                    return application
+                }))
+            })
             .catch(err => res.status(500).send(err))
     }
 
