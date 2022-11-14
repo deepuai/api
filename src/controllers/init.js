@@ -50,7 +50,7 @@ module.exports = (app) => {
       name: "ResNet50",
       version: "ImageNet",
       accuracy: 0.921,
-      n_accesses: 0,
+      status: "FITTED",
       model_id: 1,
       dataset_id: 1,
     });
@@ -58,7 +58,7 @@ module.exports = (app) => {
       name: "Xception",
       version: "ImageNet",
       accuracy: 0.945,
-      n_accesses: 0,
+      status: "FITTED",
       model_id: 2,
       dataset_id: 1,
     });

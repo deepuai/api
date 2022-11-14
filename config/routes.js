@@ -7,7 +7,10 @@ module.exports = app => {
         .get(app.src.controllers.application.get)
 
     app.route('/applications/info')
-        .get(app.src.controllers.application.getAllInfo)
+        .get(app.src.controllers.application.getApplicationsFitted)
+    
+    app.route('/applications/queue')
+        .get(app.src.controllers.application.getQueueApplications)
 
     app.route('/applications/:id/versions')
         .get(app.src.controllers.application.getApplicationVersions)
