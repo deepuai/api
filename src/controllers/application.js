@@ -76,7 +76,7 @@ module.exports = app => {
     const getQueueApplications = (req, res) => {
         app.db('applications AS a')
             .select(
-                'a.id AS application_id', 'a.name AS application_name', 'a.version', 'a.status', 'a.parent_id as parent_application_id',
+                'a.id', 'a.name', 'a.version', 'a.status',
                 'm.id AS model_id', 'm.name AS model_name',
             )
             .join('models as m', 'a.model_id', '=', 'm.id')
