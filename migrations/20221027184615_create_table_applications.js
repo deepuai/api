@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
         table.increments('id').primary()
         table.string('name').notNull()
         table.string('version').notNull()
-        table.float('accuracy').notNull()
+        table.float('accuracy')
         table.integer('n_accesses').notNull().defaultTo(0)
         table.jsonb('classes')
         table.string('status').defaultTo("WAITING")
