@@ -10,8 +10,8 @@ module.exports = (app) => {
       existsOrError(dataset.size, "Tamanho não informado");
       existsOrError(dataset.n_images, "Número de imagens não informado");
       existsOrError(dataset.n_classes, "Número de classes não informado");
+      existsOrError(dataset.classes, "Classes não informadas");
       existsOrError(dataset.images, "Imagens não informadas");
-      existsOrError(dataset.n_classes, "Classes não informadas");
       dataset.images = JSON.stringify(dataset.images);
     } catch (msg) {
       return res.status(400).send(msg);

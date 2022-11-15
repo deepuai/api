@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
         table.string('status').defaultTo("WAITING")
         table.integer('parent_id').references('id').inTable('applications')
         table.integer('model_id').references('id').inTable('models').notNull()
-        table.integer('dataset_id').references('id').inTable('datasets').notNull()
+        table.integer('dataset_id').references('id').inTable('datasets')
     })
 };
 
